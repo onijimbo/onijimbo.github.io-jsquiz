@@ -1,0 +1,36 @@
+.header{
+    background-color: darkgreen;
+    display: flex;
+    justify-content: center;
+}
+
+.header div{
+    padding: 10px;
+}
+
+.link{
+    flex: 2;
+}
+
+.title{
+    flex: 2;
+    margin-left: 2em;
+
+}
+
+.timer{
+    flex: 1;
+}
+
+.wrapper{
+    
+    position: relative;
+    margin:  150px auto 100px  ;
+    max-width: 960px;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.hidden{
+    display: none;
+}
