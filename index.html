@@ -1,64 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width= b, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="html/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
     <Div class="header">
-      <div class="link">  
+        <div class="link">
             <h3>
-               <a href="html/scores.html">High Scores!</a>
-           </h3>
-       </div>
-       <div class="title">
-           <h3>
-                Code Quiz!   
+                <a href="html/scores.html">High Scores!</a>
             </h3>
-       </div> 
+        </div>
+        <div class="title">
+            <h3>
+                Code Quiz!
+            </h3>
+        </div>
         <div class="timer">
             <h3>
-                time:
+                time: <span id="seconds"></span>
             </h3>
         </div>
     </Div>
 
     <div class="container">
-        <div class="wrapper">  
-            <div class="quizQ">
+        <div class="wrapper">
+
+            <br>
+            <div id="welcomescreen">
                 <h1 id="welcome">
                     Welcome to the Code Quiz
                 </h1>
-                <p id="instruct">This is a quiz on the fundimentals of JavaScript. You have 75 seconds to test your skill. click the start button to begin. You can also save your score at the end of the quiz.</p>
-            </div>    
-                <br>
-            <div id="questions" class="hidden">
-                <h3 id="q"></h3>
-            </div>
-            
-            <div id="qB" class="hidden">
-                <button id="qB1"></button>
-                <button id="qB2"></button>
-                <button id="qB3"></button>
-                <button id="qB4"></button>
-            </div>    
-                
+                <p id="instruct">This is a quiz on the fundimentals of JavaScript. You have 75 seconds to test your
+                    skill. click the start button to begin. You can also save your score at the end of the quiz.</p>
+
+
                 <button id="startButton">
                     start
                 </button>
-                
-        </div>   
-    
+
+            </div>
+            <div id="quizQ" class="hidden">
+                <div id="questions">
+                    <h3 id="q"></h3>
+                </div>
+
+                <div id="qB">
+                    <button id="qB1"></button>
+                    <button id="qB2"></button>
+                    <button id="qB3"></button>
+                    <button id="qB4"></button>
+                </div>
+                <h3 id='correct' style="color: green;"><span></span></h3>
+                <h3 id='wrong' style="color: red;"><span></span></h3>
+            </div>
+
+        </div>
+
     </div>
 
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   
-   <script src="html/js/questions.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="js/questions.js"></script>
+
 </body>
+
 </html>
