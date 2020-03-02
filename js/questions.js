@@ -1,8 +1,3 @@
-const srtBttn = $("#startButton");
-const welcomeEl = $("#welcome");
-const instructEl = $("#instruct");
-const qBttns = $("#qB");
-
 let currentQ = 0;
 
 let seconds = 75;
@@ -19,6 +14,7 @@ let time = 3;
 // function for adding score
 
 // function that tells user if answer is correct
+
 
 const questions = [
     {
@@ -89,14 +85,14 @@ const questions = [
 
 ]
 function correct() {
-    console.log('hello')
-    const right = satInterval(function () {
+    
+    const right = setInterval(function () {
         time--
         $('#correct > span').append('Correct!')
         if (time < 0) {
             clearInterval(right)
         }
-    }, 1000)
+    }, 1000);
 };
 
 
@@ -120,25 +116,37 @@ function quiz() {
     $('#quizQ').removeClass('hidden')
     nextQuestion()
     countDown()
-    $(this).on('click', function () {
-        console.log($('#qB > button'))
-        // for (let i = 0; i < questions[currentQ].answer.length; i++) {
-        //     if ($('#qB > button').text() === questions[i].answer[0]) {
-        //         correct()
-        //     }
-        // };
+    for (let i = 0; i < questions[currentQ].answer.length; i++){
+        $(`#qB${i+1}`).on('click', function(){
+            if ($(`#qB${i+1}`).text() === questions[currentQ].answer[0].text) {
+                console.log('shit!')
+                   correct()
+             }
         currentQ++
         nextQuestion()
-    });
-}
+        
+        });
+
+        }
+};    
+    
+    // $(this).on('click', function () {
+    //     console.log($('#qB > button'))
+    //     for (let i = 0; i < questions[currentQ].answer.length; i++) {
+    //         
+    //     };
+    
+    // });
+
 
 function nextQuestion() {
     $('#q').text(questions[currentQ].question)
 
     for (var i = 0; i < questions[currentQ].answer.length; i++) {
         $(`#qB${i + 1}`).text(questions[currentQ].answer[i].text)
+        
     }
-}
+};
 
 
 
@@ -148,14 +156,27 @@ $("#startButton").on("click", function () {
     quiz()
 });
 
+
+
+
+
+
+
+ 
+
+
+
+// function randoBttn(){
 // let randoIndex = Math.floor(Math.random()*4);
-// console.log('randoIndex ', randoIndex)
 // for(let i = 0; i < questions[i].answer.length; i ++){
-// let randoA = questions[1].answer[randoIndex].text
-// console.log('randoA ', randoA)
-// console.log(randoA.splice(randoIndex, 1));
+// questions[1].answer[randoIndex].text.splice(randoIndex, 1);
+
+
+
+// };
 // };
 
+// console.log(randoBttn());
 // {
 //     question: "Json is an acronym meaning:",
 //     answer: [
