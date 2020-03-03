@@ -86,9 +86,7 @@ const questions = [
 
 ]
 
-while(seconds = 76){
-    clearInterval(interval)
-};
+
 
 function correct() {
     $('#correct > span').append('Correct!')
@@ -175,7 +173,7 @@ function nextQuestion() {
 
 $("#startButton").on("click", function () {
     $("#welcomescreen").addClass("hidden")
-    seconds--
+    
     quiz()
 });
 
