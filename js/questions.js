@@ -1,8 +1,10 @@
 let currentQ = 0;
+let seconds = 76;
+let interval = setInterval(countDown, 1000);
 
-let seconds = 75;
+
 let score = 0;
-let time = 3;
+let time = 1;
 // function for timer 
 
 // function for answers shuffle
@@ -82,35 +84,57 @@ const questions = [
     }
 
 
-
 ]
+
+while(seconds = 76){
+    clearInterval(interval)
+};
+
 function correct() {
-    
+    $('#correct > span').append('Correct!')
     const right = setInterval(function () {
         time--
-        $('#correct > span').append('Correct!')
+        $('#correct > span').empty()
         if (time < 0) {
             clearInterval(right)
         }
-    }, 1000);
+    }, 500);
 };
 
+function incorrect() {
+    $('#wrong > span').append('Wrong! Minus 5 seconds on timer!')
+    const right = setInterval(function () {
+        time--
+        $('#wrong > span').empty()
+        if (time < 0) {
+            clearInterval(right)
+        }
+    }, 500);
+    seconds = seconds - 5
+};
+
+function finalScore(){
+     clearInterval(interval)
+    score * seconds
+    console.log(score)
+};
 
 function timeOut() {
     $('.wrapper').empty()
     $('.container').append('<h1>Game Over! Try again!</h1>')
-}
+};
 
 function countDown() {
     $('#seconds').append(seconds)
-    const x = setInterval(function () {
+    setInterval(interval)
         $('#seconds').text(seconds--)
         if (seconds < 0) {
-            clearInterval(x)
+            clearInterval(interval)
             timeOut()
         }
-    }, 1000);
+    
 };
+
 
 function quiz() {
     $('#quizQ').removeClass('hidden')
@@ -119,25 +143,23 @@ function quiz() {
     for (let i = 0; i < questions[currentQ].answer.length; i++){
         $(`#qB${i+1}`).on('click', function(){
             if ($(`#qB${i+1}`).text() === questions[currentQ].answer[0].text) {
-                console.log('shit!')
+                   score++ 
                    correct()
+             } else {
+                incorrect() 
              }
         currentQ++
         nextQuestion()
-        
-        });
-
+         });
+       
         }
+    if(currentQ > 7){
+        finalScore()
+    }    
+
 };    
     
-    // $(this).on('click', function () {
-    //     console.log($('#qB > button'))
-    //     for (let i = 0; i < questions[currentQ].answer.length; i++) {
-    //         
-    //     };
     
-    // });
-
 
 function nextQuestion() {
     $('#q').text(questions[currentQ].question)
@@ -153,6 +175,7 @@ function nextQuestion() {
 
 $("#startButton").on("click", function () {
     $("#welcomescreen").addClass("hidden")
+    seconds--
     quiz()
 });
 
