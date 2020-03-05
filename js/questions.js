@@ -1,10 +1,10 @@
 let currentQ = 0;
-let seconds = 76;
-let interval = setInterval(countDown, 1000);
-
-
+let seconds = 75;
 let score = 0;
 let time = 1;
+
+
+
 // function for timer 
 
 // function for answers shuffle
@@ -81,11 +81,34 @@ const questions = [
             { text: "replace", correct: false },
             { text: "curry", correct: false }
         ]
+    },
+    {
+        question: `You are finished!`,
+        answer: [
+            {text: null},
+            {text: null},
+            {text: null},
+            {text: null}
+            
+        ]
     }
 
 
 ]
 
+Array.prototype.shuffle = function(){
+    let i = this.length, j, temp;
+    while(--i > 0){
+        j = Math.floor(Math.random() * (i + 1));
+        temp = this[j];
+        this[j] = this[i]
+        this[i] = temp;
+    }
+    return this;
+}
+
+const arr = [0,1,2,3 ]
+let num = arr.shuffle()
 
 
 function correct() {
@@ -112,10 +135,11 @@ function incorrect() {
 };
 
 function finalScore(){
-     clearInterval(interval)
-    score * seconds
-    console.log(score)
+    $('#quizQ').empty()
+    let finalScore = score * seconds
+    $('#quizQ').append(`<h3>Your final score is ${finalScore}! Click <a href="scores.html">High Scores!</a> to log it!</h3>`)
 };
+
 
 function timeOut() {
     $('.wrapper').empty()
@@ -124,13 +148,16 @@ function timeOut() {
 
 function countDown() {
     $('#seconds').append(seconds)
-    setInterval(interval)
+    let interval = setInterval(function(){
         $('#seconds').text(seconds--)
         if (seconds < 0) {
             clearInterval(interval)
             timeOut()
-        }
-    
+        } else if(currentQ > 6){
+            clearInterval(interval)
+            finalScore()
+        };
+    }, 1000);  
 };
 
 
@@ -151,9 +178,7 @@ function quiz() {
          });
        
         }
-    if(currentQ > 7){
-        finalScore()
-    }    
+    
 
 };    
     
@@ -162,10 +187,12 @@ function quiz() {
 function nextQuestion() {
     $('#q').text(questions[currentQ].question)
 
-    for (var i = 0; i < questions[currentQ].answer.length; i++) {
-        $(`#qB${i + 1}`).text(questions[currentQ].answer[i].text)
+    for (let i = 0; i < questions[currentQ].answer.length; i++) {
         
-    }
+        $(`#qB${i + 1}`).text(questions[currentQ].answer[num[i]].text)
+        
+    }    
+    
 };
 
 

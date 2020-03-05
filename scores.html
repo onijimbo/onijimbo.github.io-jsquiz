@@ -4,9 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Scores</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <p>keep going</p>
+    <Div class="header">
+        <div class="link">
+            <h3>
+                <a href="index.html">Quiz!</a>
+            </h3>
+        </div>
+        <div class="title">
+            <h3>
+                High Scores!
+            </h3>
+        </div>
+        <div class="timer">
+            <h3>
+                Your Score: <span style="color: hotpink;" id="total"></span>
+            </h3>
+        </div>
+    </Div>
+
+    <div class="wrapper">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <input type="text" placeholder="Name!">
+                </div>
+                <div class="col-4">
+                    <input type="text" placeholder='Score'>
+                    <button>Save</button>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <h1>Name</h1>
+                </div>
+                <div class="col-4">
+                    <h1>Score</h1>
+                </div>
+            </div>
+        </div>
+     </div>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="js/questions.js"></script>
 </body>
 </html>
