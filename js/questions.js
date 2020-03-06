@@ -107,8 +107,7 @@ Array.prototype.shuffle = function(){
     return this;
 }
 
-const arr = [0,1,2,3 ]
-let num = arr.shuffle()
+
 
 
 function correct() {
@@ -137,6 +136,7 @@ function incorrect() {
 function finalScore(){
     $('#quizQ').empty()
     let finalScore = score * seconds
+    localStorage.setItem('newScore', finalScore);
     $('#quizQ').append(`<h3>Your final score is ${finalScore}! Click <a href="scores.html">High Scores!</a> to log it!</h3>`)
 };
 
@@ -167,12 +167,15 @@ function quiz() {
     countDown()
     for (let i = 0; i < questions[currentQ].answer.length; i++){
         $(`#qB${i+1}`).on('click', function(){
+            
+
             if ($(`#qB${i+1}`).text() === questions[currentQ].answer[0].text) {
                    score++ 
                    correct()
              } else {
                 incorrect() 
              }
+        
         currentQ++
         nextQuestion()
          });
@@ -186,7 +189,8 @@ function quiz() {
 
 function nextQuestion() {
     $('#q').text(questions[currentQ].question)
-
+    const arr = [0,1,2,3 ]
+    let num = arr.shuffle()
     for (let i = 0; i < questions[currentQ].answer.length; i++) {
         
         $(`#qB${i + 1}`).text(questions[currentQ].answer[num[i]].text)
@@ -211,31 +215,6 @@ $("#startButton").on("click", function () {
 
 
  
-
-
-
-// function randoBttn(){
-// let randoIndex = Math.floor(Math.random()*4);
-// for(let i = 0; i < questions[i].answer.length; i ++){
-// questions[1].answer[randoIndex].text.splice(randoIndex, 1);
-
-
-
-// };
-// };
-
-// console.log(randoBttn());
-// {
-//     question: "Json is an acronym meaning:",
-//     answer: [
-//         { text: "JavaScript Object Notation", correct: true },
-//         { text: "JavaScript Object Number", correct: false },
-//         { text: "Join Script On Null", correct: false },
-//         { text: "pizza", correct: false }
-//     ]
-// },
-
-
 
 
 
