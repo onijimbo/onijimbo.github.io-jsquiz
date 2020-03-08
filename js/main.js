@@ -36,8 +36,8 @@ $('#save').on('click', function () {
     let names = (`<h2>${key}</h2>`)
     let scores= (`<h2>${value}</h2>`)
 
-    $('#nameView').prepend(scores)
-    $('#scoreView').prepend(names)
+    $('#nameView').prepend(names)
+    $('#scoreView').prepend(scores)
     
     
     $('input:text').val('')
