@@ -2,7 +2,7 @@ let currentQ = 0;
 let seconds = 75;
 let score = 0;
 let time = 1;
-
+let hunger = 0
 
 
 // function for timer 
@@ -146,6 +146,11 @@ function timeOut() {
     $('.container').append('<h1>Game Over! Try again!</h1>')
 };
 
+function hungry() {
+    $('.wrapper').empty()
+    $('.container').append('<h2>All the answers you chose were food. You must be hungry. Get something to eat and try again!</h2>')
+};
+
 function countDown() {
     $('#seconds').append(seconds)
     let interval = setInterval(function(){
@@ -153,7 +158,12 @@ function countDown() {
         if (seconds < 0) {
             clearInterval(interval)
             timeOut()
-        } else if(currentQ > 6){
+        } else if(hunger > 6 && currentQ > 6){
+            clearInterval(interval)
+            hungry()
+        }
+        
+         else if(currentQ > 6){
             clearInterval(interval)
             finalScore()
         };
@@ -172,7 +182,14 @@ function quiz() {
             if ($(`#qB${i+1}`).text() === questions[currentQ].answer[0].text) {
                    score++ 
                    correct()
-             } else {
+             } else if($(`#qB${i+1}`).text() === questions[currentQ].answer[3].text){
+                hunger++
+                incorrect() 
+                console.log(hunger)
+            }
+             
+             
+             else {
                 incorrect() 
              }
         

@@ -1,53 +1,45 @@
 let newScore = localStorage.getItem('newScore');
 
-let name = ['Zach', 'Jason', 'Billy'];
-let scores = ['138', '120', '200'];
-
-localStorage.setItem('scores', JSON.stringify(scores));
-localStorage.setItem('name',JSON.stringify(name));
-
-let nameSave =  JSON.parse(localStorage.getItem('name'));
-let scoreSave =  JSON.parse(localStorage.getItem('scores'));
+if (newScore) {
+    $('#total').text(newScore)
+    localStorage.removeItem('newScore')
+};
 
 
+function localView() {
+    for(i = 0; i < localStorage.length; i++){
+        let key = localStorage.key(i);
+        let value = localStorage.getItem(key);
+        
+        let names = $(`<h2>${key}</h2>`)
+        let scores = $(`<h2>${value}</h2>`)
 
-if(newScore){
- $('#total').text(newScore)
-localStorage.removeItem('newScore')
+        $('#nameView').prepend(names);
+        $('#scoreView').prepend(scores)
+        console.log(key, value)
+    }
+}
 
-for(let i = 0; i < nameSave.length; i++){ 
-    let userName = $('<h2>');
-    userName.text(nameSave[i])
+localView()
+
+$('#save').on('click', function () {
     
-    $('#nameView').prepend(userName)
-};
-for(let j = 0; j < scoreSave.length; j++){
-    let userScore = $('<h2>');
-    userScore.text(scoreSave[j])
+    let key = document.getElementById("name").value;
+    let value = document.getElementById("score").value;
+
+    if(key && value){
+        localStorage.setItem(key, value);
+        
+        
+    }
+
+    let names = (`<h2>${key}</h2>`)
+    let scores= (`<h2>${value}</h2>`)
+
+    $('#nameView').prepend(scores)
+    $('#scoreView').prepend(names)
     
-    $('#scoreView').prepend(userScore)
-};
-
-
-};
-
-
-$('#save').on('click', function(){
-let nameEl = document.getElementById("name").value;
-let scoreEl = document.getElementById("score").value;
-
-name.push(nameEl);
-scores.push(scoreEl);
-
-localStorage.setItem('scores', JSON.stringify(scores));
-localStorage.setItem('name',JSON.stringify(name));
-
-let userName = $('<h2>');
-userName.text(nameEl);
-$('#nameView').prepend(userName);
-
-let userScore = $('<h2>');
-userScore.text(scoreEl.toString());
-$('scoreView').prepend(userScore);
+    
+    $('input:text').val('')
 
 });
